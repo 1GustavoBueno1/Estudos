@@ -1,0 +1,3 @@
+Acabei de ver meu primeiro video sobre a FlaskAPI, aprendi sobre o basico do
+basico, era um video de apenas 10 minutos, FlaskAPI e basimente um framework
+do python que nos possibilita criar sites com a linguagem
