@@ -1,9 +1,8 @@
-from flask import Flask, make_response, jsonify, request
-from json_py import load_cars, save_cars
+from flask import Flask, render_template
 app = Flask(__name__)
 app.json.sort_keys = False
-Carros = load_cars()
-
+#apartir daqui eu dei inicio a outro curso, pois não achei mais videos
+#do antigo criador
 
 #Rotas
 #Rotas são aonde acontece a criação de cada pagina do site
@@ -21,26 +20,19 @@ Carros = load_cars()
 
 @app.route("/", methods = ['GET'])
 def homepage():
-    response = make_response(
-        jsonify(mensage = 'Lista de carros cadastrados.',
-                Dados = Carros)
-    )
-    return response
+    fruta1 = 'Morango'
+    fruta2 = 'Maça'
+    fruta3 = 'Melancia'
+    fruta4 = 'Banana'
 
+    return render_template("Index.html", fruta1 = fruta1,
+                                        fruta2 = fruta2,
+                                        fruta3 = fruta3,
+                                        fruta4 = fruta4)
 
-
-@app.route("/create-car", methods = ['POST'])
-def create_car():
-    Car = request.json
-    Carros.append(Car)
-    save_cars(Carros)
-    return make_response(
-        jsonify(
-            mensage = 'Carro registrado com sucesso!',
-            Data_car = Car
-        )
-    )
-
+@app.route("/page2", methods = ['GET'])
+def pag2():
+    return render_template("pag2.html")
 
 #Aqui e onde eu "ativo" o site
 if __name__ == '__main__':
