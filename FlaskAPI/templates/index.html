@@ -9,10 +9,9 @@
  <h1>Lista de frutas</h1>
  <hr>
  <ol>
-    <li>{{fruta1}}</li>
-    <li>{{fruta2}}</li>
-    <li>{{fruta3}}</li>
-    <li>{{fruta4}}</li>
+    {% for fruta in frutas %}
+    <li>{{fruta}}</li>
+    {% endfor %}
  </ol>
 
 </body>
