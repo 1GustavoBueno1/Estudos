@@ -20,9 +20,9 @@ app.json.sort_keys = False
 
 @app.route("/", methods = ['GET'])
 def homepage():
-    frutas = ['Morango', 'Maça', 'Melancia', 'Banana']
-
-    return render_template("Index.html", frutas = frutas)
+    #frutas = ['Morango', 'Maça', 'Melancia', 'Banana']
+    notas = {'Gustavo': 10, 'Caio': 10, 'Vanessa': 10}
+    return render_template("Index.html", notas = notas)
 @app.route("/page2", methods = ['GET'])
 def pag2():
     return render_template("pag2.html")

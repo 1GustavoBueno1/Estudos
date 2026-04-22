@@ -6,13 +6,13 @@
     <title>Integrando HTML ao flask</title>
 </head>
 <body>
- <h1>Lista de frutas</h1>
+ <h1>Notas dos alunos</h1>
  <hr>
- <ol>
-    {% for fruta in frutas %}
-    <li>{{fruta}}</li>
+    {% for chave, valor in notas.items() %}
+        <details>
+            <summary>{{chave}}</summary>
+            <p>{{valor}}</p>
+        </details>
     {% endfor %}
- </ol>
-
 </body>
 </html>
