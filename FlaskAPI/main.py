@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 app = Flask(__name__)
 app.json.sort_keys = False
 #apartir daqui eu dei inicio a outro curso, pois não achei mais videos
@@ -17,12 +17,13 @@ app.json.sort_keys = False
 #se comunicar
 
 #Metodo POST, usado para inserir algum valor a sua tabela
-
-@app.route("/", methods = ['GET'])
+frutas = ['Morango', 'Maça', 'Melancia', 'Banana']
+@app.route("/", methods = ['GET', 'POST'])
 def homepage():
-    #frutas = ['Morango', 'Maça', 'Melancia', 'Banana']
-    notas = {'Gustavo': 10, 'Caio': 10, 'Vanessa': 10}
-    return render_template("Index.html", notas = notas)
+    if request.method == "POST":
+        if request.form.get("frutas"):
+            frutas.append(request.form.get("frutas"))
+    return render_template("Index.html", frutas = frutas)
 @app.route("/page2", methods = ['GET'])
 def pag2():
     return render_template("pag2.html")

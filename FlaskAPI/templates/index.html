@@ -6,13 +6,17 @@
     <title>Integrando HTML ao flask</title>
 </head>
 <body>
- <h1>Notas dos alunos</h1>
+ <h1 style = "text-align: center;">Adicionar frutas a uma lista</h1>
  <hr>
-    {% for chave, valor in notas.items() %}
-        <details>
-            <summary>{{chave}}</summary>
-            <p>{{valor}}</p>
-        </details>
+ <ol>
+    {% for Fruta in frutas %}
+        <li>{{Fruta}}</li>
     {% endfor %}
+   <form action="{{url_for('homepage')}}" method="post">
+    <label>frutas</label>
+    <input type="text" name = "frutas" >
+    <button>Adicionar</button>
+   </form>
+</ol>
 </body>
 </html>
