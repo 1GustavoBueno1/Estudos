@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segunda Pagina</title>
+    <title>Notas dos alunos</title>
 </head>
 <body>
-    <h2>Segunda pagina</h2>
-</body>
+   <h1 style = "text-align: center;">Notas do ano letivo</h1>
+   <hr>
+        {% for registro in registros %}
+        <details>
+            <summary>{{registro.Aluno}}</summary>
+            <p>{{registro.Nota}}</p>
+        </details>
+        {% endfor %}
+        <form action = "{{url_for('pag2')}}" method = "post">
+            <label>Aluno</label>
+            <input type="text" name = "Aluno" required >
+            <label>Nota</label>
+            <input type="text" name = "Nota" required>
+            <button>Adicionar</button>
+        </form>
+
+   </body>
 </html>
