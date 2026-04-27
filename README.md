@@ -28,13 +28,3 @@ Documentar minha evolução como desenvolvedor backend ao longo dos anos, regist
 Desenvolvedor backend com foco em Python, aprendendo continuamente e construindo projetos reais. Confira meus projetos em [github.com/1GustavoBueno1](https://github.com/1GustavoBueno1).
 
 ---
-
-## 📅 Progresso
-
-| Tecnologia | Status |
-|------------|--------|
-| Python | ✅ Em uso |
-| MySQL | ✅ Em uso |
-| Flask | 🔄 Estudando |
-| Docker | 📅 Em breve |
-| Django | 📅 Em breve |
