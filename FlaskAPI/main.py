@@ -19,14 +19,17 @@ app.json.sort_keys = False
 #Metodo POST, usado para inserir algum valor a sua tabela
 registros = []
 frutas = ["banana", "maça", "Melancia"]
-@app.route("/", methods = ['GET', 'POST'])
+@app.route("/", methods = ['GET'])
 def homepage():
+    return render_template("homepage.html")
+@app.route("/pagina1", methods = ['GET', 'POST'])
+def pagina1():
     if request.method == "POST":
         if request.form.get("frutas"):
             frutas.append(request.form.get("frutas"))
     return render_template("Index.html", frutas = frutas)
-@app.route("/page2", methods = ['GET', 'POST'])
-def pag2():
+@app.route("/pagina2", methods = ['GET', 'POST'])
+def pagina2():
     if request.method == 'POST':
         if request.form.get("Aluno") and request.form.get("Nota"):
             registros.append({'Aluno': request.form.get("Aluno"), 'Nota': request.form.get("Nota")})
@@ -34,4 +37,4 @@ def pag2():
 
 #Aqui e onde eu "ativo" o site
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
