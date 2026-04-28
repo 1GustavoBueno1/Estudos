@@ -7,9 +7,11 @@
         <li>{{Fruta}}</li>
     {% endfor %}
    <form action="{{url_for('pagina1')}}" method="post">
-    <label>frutas</label>
-    <input type="text" name = "frutas" required >
-    <button>Adicionar</button>
+    <div class = "form-group">
+        <label for = "exemplofrutas">frutas</label>
+        <input class = "form-control w-25" id = "exemplofrutas" type = "text" name = "frutas" placeholder="Informe o nome de uma fruta" required >
+    </div>
+    <button class = "btn btn-primary mt-3">Adicionar</button>
    </form>
 </ol>
 {% endblock conteudo %}
