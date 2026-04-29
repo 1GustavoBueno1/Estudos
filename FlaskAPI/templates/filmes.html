@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h1 style="text-align: center;">Filmes populares no momento</h1>
+<hr style="height: max-content;">
+<div class="row">
+    {% for filme in filmes %}
+        <div class="col-md-3">
+            <hr>
+            <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="http://image.tmdb.org/t/p/w500{{filme.backdrop_path}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{filme.title}}</h5>
+                    <p class="card-text">{{filme.overview}}</p>
+                    <p class="card-text">Realese date: {{filme.release_date}}</p>
+                    <hr>
+                    <h4>Average:<span class="badge bg-secondary ms-3">{{ "%.1f"|format(filme.vote_average)}}</span></h4>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock conteudo %}
