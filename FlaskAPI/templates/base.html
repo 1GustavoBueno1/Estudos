@@ -35,9 +35,9 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Filmes</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{url_for('filmes_populares')}}">Filmes mais populares do momento</a></li>
-                <li><a class="dropdown-item" href="{{url_for('filmes_infantis')}}">filmes infantis</a></li>
-                <li><a class="dropdown-item" href="{{url_for('filmes_em_cartaz')}}">filmes em cartaz nos cinemas</a></li>
+                <li><a class="dropdown-item" href="{{url_for('filmes', propriedade = 'populares')}}">Filmes mais populares do momento</a></li>
+                <li><a class="dropdown-item" href="{{url_for('filmes', propriedade = 'infantil')}}">filmes infantis</a></li>
+                <li><a class="dropdown-item" href="{{url_for('filmes', propriedade = 'filmes_em_cartaz')}}">filmes em cartaz nos cinemas</a></li>
                 <li><hr class="dropdown-divider"></li>
             </ul>
             </li>

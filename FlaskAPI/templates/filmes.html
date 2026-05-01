@@ -1,12 +1,6 @@
 {% extends 'base.html' %}
 {% block conteudo %}
-{% if request.path == '/filmes_populares' %}
-    <h1 style="text-align: center;">Filmes mais populares no momento</h1>
-{% elif request.path == '/filmes_infantis' %}
-    <h1 style="text-align: center;">Filmes infantis</h1>
-{% elif request.path == '/filmes_em_cartaz' %}
-    <h1 style="text-align: center;">Filmes em cartaz nos cinemas</h1>
-{% endif %}
+<h1 style="text-align: center;">Filmes mais populares no momento</h1>
 <hr style="height: max-content;">
 <div class="row">
     {% for filme in filmes %}
