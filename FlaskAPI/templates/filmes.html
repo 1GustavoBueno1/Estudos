@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block conteudo %}
-<h1 style="text-align: center;">Filmes populares no momento</h1>
+{% if request.path == '/filmes_populares' %}
+    <h1 style="text-align: center;">Filmes mais populares no momento</h1>
+{% elif request.path == '/filmes_infantis' %}
+    <h1 style="text-align: center;">Filmes infantis</h1>
+{% elif request.path == '/filmes_em_cartaz' %}
+    <h1 style="text-align: center;">Filmes em cartaz nos cinemas</h1>
+{% endif %}
 <hr style="height: max-content;">
 <div class="row">
     {% for filme in filmes %}
@@ -9,7 +15,7 @@
             <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="http://image.tmdb.org/t/p/w500{{filme.backdrop_path}}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">{{filme.title}}</h5>
+                    <h4 class="card-title" style="text-align: center;">{{filme.title}}</h5>
                     <p class="card-text">{{filme.overview}}</p>
                     <p class="card-text">Realese date: {{filme.release_date}}</p>
                     <hr>
