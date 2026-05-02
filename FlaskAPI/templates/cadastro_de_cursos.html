@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h1 style = "text-align: center;">Cadastro de curso</h1>
+<hr>
+    <div class="border  p-4 w-50 mx-auto mt-5">
+        <form action = "{{url_for('cadastrar_curso')}}" method = "post">
+            <label for = "nomedocurso" class = "ms-3">Nome do curso</label>
+            <input class = "form-control w-50 mb-3" id = "nomedocurso"type="text" name = "nome"  placeholder="Insira o nome do curso" required >
+            
+            <label for = "descriçãodocurso" class = "ms-3">Descrição do curso</label>
+            <input class = "form-control w-50 mb-3" type="text" id="descriçãodocurso" name = "desc" placeholder="Insira a descrição do curso" required>
+            
+            <label for = "ch" class = "ms-3">Carga horaria do curso</label>
+            <input class = "form-control w-50 mb-3" type="number" id="ch" name = "ch" placeholder="Insira a carga horaria do curso" required>
+            
+            <button class = "btn btn-primary mt-3 ms-3">Adicionar</button>
+        </form>
+    </div>
+{% endblock conteudo %}

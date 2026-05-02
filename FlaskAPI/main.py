@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import urllib.request, json
 from dotenv import load_dotenv
@@ -9,7 +9,7 @@ db = SQLAlchemy(app)
 app.json.sort_keys = False
 load_dotenv()
 API_KEY = os.getenv("api_key")
-class UsuariosDoCurso(db.Model):
+class Cursos(db.Model):
     def __init__(self, nome, desc, ch):
         self.nome = nome
         self.desc = desc
@@ -18,26 +18,25 @@ class UsuariosDoCurso(db.Model):
     nome = db.Column(db.String(50))
     desc = db.Column(db.String(150))
     ch = db.Column(db.Integer)
-
-
-registros = []
-frutas = ["banana", "maça", "Melancia"]
 @app.route("/", methods = ['GET'])
 def homepage():
     return render_template("homepage.html")
-@app.route("/pagina1", methods = ['GET', 'POST'])
-def pagina1():
-    if request.method == "POST":
-        if request.form.get("frutas"):
-            frutas.append(request.form.get("frutas"))
-    return render_template("Index.html", frutas = frutas)
 
-@app.route("/pagina2", methods = ['GET', 'POST'])
-def pagina2():
+@app.route("/CursosDisponiveis", methods = ['GET'])
+def ver_cursos():
+    return render_template("cursos_disponiveis.html", cursos = Cursos.query.all())
+
+@app.route("/CadastrarCurso", methods = ['GET', 'POST'])
+def cadastrar_curso():
     if request.method == 'POST':
-        if request.form.get("Aluno") and request.form.get("Nota"):
-            registros.append({'Aluno': request.form.get("Aluno"), 'Nota': request.form.get("Nota")})
-    return render_template("pag2.html", registros = registros)
+        nome = request.form.get("nome")
+        desc = request.form.get("desc")
+        ch = request.form.get("ch")
+        curso = Cursos(nome, desc, ch)
+        db.session.add(curso)
+        db.session.commit()
+        return redirect(url_for('cadastrar_curso'))
+    return render_template("cadastro_de_cursos.html")
 
 @app.route("/filmes/<propriedade>", methods = ['GET'])
 def filmes(propriedade):
@@ -47,8 +46,8 @@ def filmes(propriedade):
         url = f'https://api.themoviedb.org/3/discover/movie?with_genres=16&certification_country=US&certification.lte=PG&sort_by=popularity.desc&api_key={API_KEY}'
     elif propriedade == 'filmes_em_cartaz':
         url = f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}'
-    api_reposta = urllib.request.urlopen(url)
-    dados_brutos = api_reposta.read()
+    api_resposta = urllib.request.urlopen(url)
+    dados_brutos = api_resposta.read()
     jsondata = json.loads(dados_brutos)
     return render_template("filmes.html", filmes = jsondata['results'])
 
