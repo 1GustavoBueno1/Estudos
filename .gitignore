@@ -1,0 +1,31 @@
+# Dependências de instalação
+node_modules/
+vendor/
+
+# Arquivos de sistema e do SO
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Arquivos de editor e IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs e bancos de dados
+*.log
+*.sql
+*.sqlite
+
+# Arquivos compilados ou de build
+*.class
+*.exe
+*.dll
+*.o
+*.so
+bin/
+obj/
+
+# Arquivos de configuração sensíveis (ex: variáveis de ambiente)
+.env   
