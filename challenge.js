@@ -25,8 +25,8 @@ function chunkArray(items, { size = 2 } = {}) {
   return chunks;
 }
 
-function getConfig(options) {
-  const { retries = 3, timeout = 1000 } = options;
+function getConfig(options = {}) {
+  const { retries = 3, timeout = 1000} = options;
   return { retries, timeout };
 }
 
