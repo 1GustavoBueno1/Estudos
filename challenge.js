@@ -9,12 +9,15 @@ function paginate(items, { page = 1, limit = 3 } = {}) {
 }
 
 function removeById(items, id) {
-  const find = findUserById(items ,id)
-  return items.filter(i => i.id !== find.id);
+  const find = findUserById(items, id);
+  if (!find) {
+    throw new Error("Item not found");
+  }
+  return items.filter(task => task.id !== find.id);
 }
 
-function findUserById(users, id) {
-  return users.find((u) => (u.id === id));
+function findUserById(lista, id) {
+  return lista.find((u) => u.id === id);
 }
 
 function chunkArray(items, { size = 2 } = {}) {
