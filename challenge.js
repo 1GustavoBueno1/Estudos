@@ -9,9 +9,8 @@ function paginate(items, { page = 1, limit = 3 } = {}) {
 }
 
 function removeById(items, id) {
-  const find = findUserById(id)
-  const index = items.indexOf(find);
-  return items
+  const find = findUserById(items ,id)
+  return items.filter(i => i.id !== find.id);
 }
 
 function findUserById(users, id) {
