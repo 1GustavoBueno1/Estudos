@@ -5,16 +5,17 @@
 function paginate(items, { page = 1, limit = 3 } = {}) {
   const start = (page - 1) * limit;
   const end = start + limit;
-  return items.slice(end, start);
+  return items.slice(start, end);
 }
 
 function removeById(items, id) {
-  const index = items.indexOf(id);
-  return items.filter((_, i) => i !== index);
+  const find = findUserById(id)
+  const index = items.indexOf(find);
+  return items
 }
 
 function findUserById(users, id) {
-  return users.find((u) => (u.id = id));
+  return users.find((u) => (u.id === id));
 }
 
 function chunkArray(items, { size = 2 } = {}) {
