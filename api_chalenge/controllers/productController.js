@@ -31,10 +31,11 @@ function getDiscountPreview(req, res) {
 }
 
 function createQuickLabel(req, res) {
-  const label = req.body.name =+ " - NOVO";
+  let label = req.body.name
   if (!label) {
     return res.status(400).json({erro: "Deve conter o campo name"})
   }
+  label = label.toUpperCase() + "- NOVO"
   res.status(201).json({ label });
 }
 
