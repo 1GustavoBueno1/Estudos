@@ -7,7 +7,7 @@ function listProducts(req, res) {
 }
 
 function getProduct(req, res) {
-  const id = req.params.id;
+  const id = Number(req.params.id);
   const product = db.findById(id);
 
   if (!product) {
