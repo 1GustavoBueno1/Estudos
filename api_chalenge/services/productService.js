@@ -6,8 +6,12 @@ function listProductsSortedByPrice() {
 }
 
 function getDiscountedPrice(product, percent) {
-  product.price = product.price - product.price * (percent / 100);
-  return product;
+  const desconto = product.price * (percent / 100)
+  const valor_final = product.price - desconto
+  return {
+    ...product,
+    price: valor_final
+  }
 }
 
 async function checkLowStock(threshold = 5) {
