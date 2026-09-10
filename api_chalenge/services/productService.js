@@ -2,7 +2,7 @@ const db = require("../database/db");
 
 function listProductsSortedByPrice() {
   const products = db.getAll();
-  return products.sort();
+  return products.sort((produtoA, produtoB) => produtoA.price - produtoB.price);
 }
 
 function getDiscountedPrice(product, percent) {
