@@ -1,0 +1,12 @@
+{
+  "name": "broken-products-api",
+  "version": "1.0.0",
+  "description": "API de produtos/estoque com bugs propositais — desafio 3",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
