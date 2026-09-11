@@ -1,4 +1,4 @@
-let orders = [
+const orders = [
   {
     id: 1,
     customerName: "Gustavo",

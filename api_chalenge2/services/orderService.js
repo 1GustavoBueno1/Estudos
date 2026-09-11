@@ -13,14 +13,10 @@ async function notifyPendingOrders() {
   const orders = db.getAll();
   const results = [];
 
-  for (var i = 0; i < orders.length; i++) {
-    setTimeout(async () => {
+  for (let i = 0; i < orders.length; i++) {
       const message = await sendNotification(orders[i]);
       results.push(message);
-    }, 10);
-  }
-
-  await new Promise((resolve) => setTimeout(resolve, 100));
+    }
   return results;
 }
 
