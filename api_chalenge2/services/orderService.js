@@ -21,16 +21,13 @@ async function notifyPendingOrders() {
 }
 
 function addItemToCart(order, newItem) {
-  const alreadyInCart = order.items.includes(newItem);
-
+  const alreadyInCart = order.items.find(((item_name) => item_name.name === newItem.name));
   if (alreadyInCart) {
-    return { added: false, reason: "Item já está no carrinho" };
+    return { added: false, reason: "Item já está no carrinho", status: 403};
   }
-
   order.items.push(newItem);
-  return { added: true };
-}
-
+    return { added: true, status: 201};
+  }
 function calculateTax(total) {
   return new Promise((resolve) => {
     setTimeout(() => resolve(total * 0.1), 10);

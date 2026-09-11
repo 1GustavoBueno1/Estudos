@@ -14,9 +14,9 @@ function addItem(req, res) {
     return res.status(404).json({ error: "Pedido não encontrado" });
   }
 
-  const { name } = req.body;
-  const result = orderService.addItemToCart(order, { name });
-  res.json(result);
+  const name = req.body;
+  const result = orderService.addItemToCart(order,  name);
+  res.json.status(result.status)(result);
 }
 
 async function getTotal(req, res) {
