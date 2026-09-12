@@ -14,7 +14,7 @@ function addItem(req, res) {
     return res.status(404).json({ error: "Pedido não encontrado" });
   }
 
-  const name = req.body;
+  const {name} = req.body;
   const result = orderService.addItemToCart(order,  name);
   res.status(result.status).json(result);
 }
@@ -40,7 +40,7 @@ function getCity(req, res) {
   }
 
   const city = orderService.getCustomerCity(order);
-  res.status(city.status).json({ city });
+  res.status(city.status).json(city);
 }
 
 async function checkout(req, res) {
