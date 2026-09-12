@@ -57,8 +57,20 @@ function deposit(accountId, amount) {
 function getSortedStatement(accountId) {
   const account = db.findById(accountId);
   if (!account) throw new Error("Conta não encontrada");
+  const transactions = [...account.transactions].sort((a, b) => {
+    const mesA = a.date.slice(5, 7)
+    const mesB = b.date.slice(5, 7)
 
-  return [...account.transactions].sort((a, b) => a.date - b.date);
+    if (mesA !== mesB) {
+      return mesA - mesB
+    }
+
+    const diaA = a.date.slice(8, 10)
+    const diaB = b.date.slice(8, 10)
+
+    return diaA - diaB
+  })
+  return transactions
 }
 
 function getTotalDeposits(accountId) {
