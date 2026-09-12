@@ -1,0 +1,8 @@
+{
+  "name": "broken-wallet-api",
+  "version": "1.0.0",
+  "description": "API de carteira digital com bugs de concorrência, ponto flutuante e recursão — desafio 5",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": { "express": "^4.19.2" }
+}
