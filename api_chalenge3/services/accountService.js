@@ -1,24 +1,51 @@
 const db = require("../database/db");
 
+const lock = new Map()
+
+
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function withdraw(accountId, amount) {
-  const account = db.findById(accountId);
-  if (!account) throw new Error("Conta não encontrada");
+  const previousLock = lock.get(accountId) ?? Promise.resolve();
 
-  if (account.balance < amount) {
-    throw new Error("Saldo insuficiente");
+  let release;
+
+  const currentLock = new Promise(resolve => {
+    release = resolve;
+  });
+
+  const nextLock = previousLock.then(() => currentLock);
+
+  lock.set(accountId, nextLock);
+
+  await previousLock;
+
+  try {
+    const account = db.findById(accountId);
+
+    if (!account) {
+      throw new Error("Conta não encontrada");
+    }
+
+    if (account.balance < amount) {
+      throw new Error("Saldo insuficiente");
+    }
+
+    await delay(50);
+
+    account.balance -= amount;
+
+    return account.balance;
+  } finally {
+    release();
+
+    if (lock.get(accountId) === nextLock) {
+      lock.delete(accountId);
+    }
   }
-
-  // Simula uma chamada externa (ex: validação antifraude) antes de efetivar o saque.
-  await delay(50);
-
-  account.balance -= amount;
-  return account.balance;
 }
-
 function deposit(accountId, amount) {
   const account = db.findById(accountId);
   if (!account) throw new Error("Conta não encontrada");
