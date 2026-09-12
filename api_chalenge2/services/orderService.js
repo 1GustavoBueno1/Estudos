@@ -34,15 +34,12 @@ function calculateTax(total) {
   });
 }
 
-function getOrderTotal(order) {
+async function getOrderTotal(order) {
   const itemPrice = 50;
   const total = order.items.length * itemPrice;
-
-  return calculateTax(total).then((tax) => {
-    const finalTotal = total + tax;
-  }).then((finalTotal) => {
-    return { total, tax: finalTotal - total, finalTotal };
-  });
+  const tax = await calculateTax(total)
+  const finalTotal = total + tax;
+  return { total, tax: finalTotal - total, finaltotal: finalTotal };
 }
 
 function getCustomerCity(order) {
