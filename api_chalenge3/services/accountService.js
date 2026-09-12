@@ -1,7 +1,7 @@
 const db = require("../database/db");
 
 const lock = new Map()
-
+const max_attemps = 5
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -97,9 +97,8 @@ function tryTransfer(fromId, toId, amount) {
 
 function transferWithRetry(fromId, toId, amount, attempts) {
   const result = tryTransfer(fromId, toId, amount);
-  if (!result.success && attempts < 3) {
-    attempts += 1
-    return transferWithRetry(fromId, toId, amount, attempts);
+  if (!result.success && attempts < max_attemps) {
+    return transferWithRetry(fromId, toId, amount, attempts + 1);
   }
 
   return result;
