@@ -77,9 +77,10 @@ function getTotalDeposits(accountId) {
   const account = db.findById(accountId);
   if (!account) throw new Error("Conta não encontrada");
 
-  return account.transactions
+  return Number(account.transactions
     .filter((t) => t.amount > 0)
-    .reduce((sum, t) => sum + t.amount, 0);
+    .reduce((sum, t) => sum + t.amount, 0)
+    .toFixed(2));
 }
 
 function tryTransfer(fromId, toId, amount) {
