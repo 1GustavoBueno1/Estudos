@@ -29,7 +29,7 @@ function deposit(req, res) {
   const { amount } = req.body;
 
   if (!amount || amount <= 0) {
-    res.status(400).json({ error: "Valor de depósito inválido" });
+    return res.status(400).json({ error: "Valor de depósito inválido" });
   }
 
   const balance = accountService.deposit(id, amount);
