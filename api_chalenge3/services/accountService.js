@@ -97,8 +97,9 @@ function tryTransfer(fromId, toId, amount) {
 
 function transferWithRetry(fromId, toId, amount, attempts) {
   const result = tryTransfer(fromId, toId, amount);
-
-  if (!result.success) {
+  let attemp = 0
+  if (!result.success && attempts <= attemp) {
+    attemp =+ 1
     return transferWithRetry(fromId, toId, amount, attempts);
   }
 
