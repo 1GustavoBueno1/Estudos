@@ -16,7 +16,7 @@ function addItem(req, res) {
 
   const name = req.body;
   const result = orderService.addItemToCart(order,  name);
-  res.json.status(result.status)(result);
+  res.status(result.status).json(result);
 }
 
 async function getTotal(req, res) {
