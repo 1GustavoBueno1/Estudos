@@ -40,7 +40,7 @@ function getCity(req, res) {
   }
 
   const city = orderService.getCustomerCity(order);
-  res.json({ city });
+  res.status(city.status).json({ city });
 }
 
 async function checkout(req, res) {

@@ -43,10 +43,13 @@ async function getOrderTotal(order) {
 }
 
 function getCustomerCity(order) {
+  if (!order.address) {
+    return {erro: "O pedido não possui endereço informado", status: 404}
+  }
   const {
     address: { city },
   } = order;
-  return city;
+  return {city: city, status: 200};
 }
 
 function chargeCustomer(order) {
