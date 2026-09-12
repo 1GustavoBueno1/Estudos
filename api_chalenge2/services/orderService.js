@@ -52,16 +52,12 @@ function getCustomerCity(order) {
   return {city: city, status: 200};
 }
 
-function chargeCustomer(order) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (order.items.length === 0) {
-        reject(new Error("Pedido sem itens, não é possível cobrar"));
-      } else {
-        resolve(`Cobrança de ${order.items.length * 50} realizada`);
-      }
-    }, 10);
-  });
+async function chargeCustomer(order) {
+  if (order.items.length === 0) {
+    throw new Error("Pedido sem itens, não é possível cobrar")
+  } else {
+    return `Cobrança de ${order.items.length * 50} realizada`
+  }
 }
 
 async function processOrder(orderId) {
@@ -69,10 +65,9 @@ async function processOrder(orderId) {
   if (!order) {
     throw new Error("Pedido não encontrado");
   }
-
   try {
-    const chargeResult = chargeCustomer(order);
-    return { success: true, chargeResult };
+    const chargeResult = await chargeCustomer(order);
+    return { success: true, charge: chargeResult };
   } catch (err) {
     return { success: false, error: err.message };
   }
