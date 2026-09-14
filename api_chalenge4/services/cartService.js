@@ -4,7 +4,7 @@ const cart = new Cart();
 const totalCache = {};
 
 function getCart() {
-  return cart.items;
+  return cart
 }
 
 function addItem(item) {

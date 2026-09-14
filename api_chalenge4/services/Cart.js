@@ -18,8 +18,10 @@ class Cart {
   }
 
   duplicate() {
-    return { ...this };
+    const deep_copy = structuredClone(this.items)
+    const newcart = new Cart()
+    newcart.items = deep_copy
+    return newcart
   }
 }
-
 module.exports = Cart;
