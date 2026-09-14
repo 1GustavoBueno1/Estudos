@@ -4,7 +4,7 @@ const cart = new Cart();
 const totalCache = {};
 
 function getCart() {
-  return cart;
+  return cart.items;
 }
 
 function addItem(item) {
@@ -13,7 +13,7 @@ function addItem(item) {
 
 // Adiciona vários itens de uma vez, reaproveitando o método da classe.
 function bulkAdd(items) {
-  items.forEach(cart.addItem);
+  items.forEach(cart.addItem.bind(cart));
 }
 
 function removeItemsById(id) {
