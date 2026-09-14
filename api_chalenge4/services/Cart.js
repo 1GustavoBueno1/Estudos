@@ -10,11 +10,11 @@ class Cart {
   }
 
   removeItemsById(id) {
-    this.items.forEach((item, index) => {
-      if (item.id === id) {
-        this.items.splice(index, 1);
+    for (let i = this.items.length - 1; i >= 0; i--) {
+      if (this.items[i].id === id) {
+        this.items.splice(i, 1)
       }
-    });
+    }
   }
 
   duplicate() {
