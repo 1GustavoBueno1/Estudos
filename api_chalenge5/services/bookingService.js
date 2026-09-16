@@ -1,4 +1,5 @@
 const db = require("../db/database");
+const validar = require("../services/validation")
 
 // Dois intervalos de tempo se sobrepoem?
 function overlaps(aStart, aEnd, bStart, bEnd) {
@@ -55,8 +56,12 @@ function createBooking(data) {
   };
 
   applyServiceFee(booking);
-
-  return db.insertBooking(booking);
+  const resultado = validar.validateBooking(booking)
+  if (resultado.ok) {
+   return db.insertBooking(booking)
+  } else {
+    return resultado
+  };
 }
 
 function getBooking(id) {
