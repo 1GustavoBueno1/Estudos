@@ -56,7 +56,7 @@ function createBooking(data) {
   };
 
   applyServiceFee(booking);
-  const resultado = validar.validateBooking(booking)
+  const resultado = validar.validateBooking(data, room)
   if (resultado.ok) {
    return db.insertBooking(booking)
   } else {
