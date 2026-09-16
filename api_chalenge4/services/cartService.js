@@ -25,15 +25,15 @@ function duplicateCart() {
 }
 
 function getCachedTotal() {
-  const key = cart.items.length;
+  const key = cart.items.map(i => i.price).join(",") 
 
-  if (totalCache[key] !== undefined) {
-    return totalCache[key];
-  }
+if (totalCache[key] !== undefined) {
+  return totalCache[key];
+}
 
-  const total = cart.items.reduce((sum, item) => sum + item.price, 0);
-  totalCache[key] = total;
-  return total;
+const total = cart.items.reduce((sum, item) => sum + item.price, 0);
+totalCache[key] = total;
+return total;
 }
 
 module.exports = {
