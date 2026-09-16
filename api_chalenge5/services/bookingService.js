@@ -26,7 +26,6 @@ function getAllRooms() {
 function getAvailableRooms(start, end) {
   return db.listRooms().filter((room) => {
     const roomBookings = db.listBookingsByRoom(room.id);
-
     const temConflito = roomBookings.some((b) =>
       overlaps(
         new Date(start),

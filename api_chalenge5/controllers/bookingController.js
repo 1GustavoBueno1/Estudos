@@ -13,7 +13,7 @@ function listAvailableRooms(req, res) {
     return res.status(400).json({ error: "informe start e end na query" });
   }
 
-  res.json(bookingService.getAllRooms());
+  res.json(bookingService.getAvailableRooms(start, end));
 }
 
 function listBookings(req, res) {
