@@ -9,9 +9,6 @@ function search(term) {
 const debouncedSearch = debounce(search, 300);
 
 console.log("Simulando alguém digitando rápido: 'g', 'gu', 'gus', 'gust'...");
-debouncedSearch("g");
-debouncedSearch("gu");
-debouncedSearch("gus");
 debouncedSearch("gust");
 
 console.log(
