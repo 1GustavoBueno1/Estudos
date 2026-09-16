@@ -41,7 +41,7 @@ function createBooking(req, res) {
 
   const booking = bookingService.createBooking(data);
 
-  res.status(201).json(bookingService.applyServiceFee(booking));
+  res.status(201).json(booking);
 }
 
 function updatePeople(req, res) {
