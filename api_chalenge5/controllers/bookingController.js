@@ -47,14 +47,12 @@ function createBooking(req, res) {
 function updatePeople(req, res) {
   const id = Number(req.params.id);
   const { people } = req.body;
-
-  const booking = db.findBookingById(id);
+  
+  const booking = db.updateBooking(id, people);
 
   if (!booking) {
     return res.status(404).json({ error: "reserva nao encontrada" });
   }
-
-  booking.people = people;
 
   res.json(booking);
 }
