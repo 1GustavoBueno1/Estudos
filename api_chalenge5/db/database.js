@@ -52,6 +52,13 @@ function insertBooking(booking) {
   return booking;
 }
 
+function updateBooking(id, changes) {
+  const booking = bookings.find((b) => b.id === id)
+  if (!booking) return null;
+  Object.assign(booking, {people: changes})
+  return { ...booking }
+}
+
 module.exports = {
   rooms,
   bookings,
@@ -61,4 +68,5 @@ module.exports = {
   listBookings,
   listBookingsByRoom,
   insertBooking,
+  updateBooking,
 };
