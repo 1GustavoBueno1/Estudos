@@ -28,12 +28,11 @@ function allReturned(bookId) {
   const loans = db.listLoansByBook(bookId);
 
   for (const loan of loans) {
-    if (loan.returnedAt !== null) {
-      return true;
+    if (loan.returnedAt === null) {
+      return false;
     }
   }
-
-  return false;
+  return true;
 }
 
 function sortLoansByDate() {
