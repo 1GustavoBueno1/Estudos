@@ -3,7 +3,7 @@ const validar = require("../services/validation")
 
 // Dois intervalos de tempo se sobrepoem?
 function overlaps(aStart, aEnd, bStart, bEnd) {
-  return aStart <= bEnd && aEnd >= bStart;
+  return aStart < bEnd && aEnd > bStart;
 }
 
 // Quantas horas tem entre start e end.
