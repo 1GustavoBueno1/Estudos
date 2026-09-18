@@ -45,7 +45,7 @@ function totalFines(todayISO) {
   const loans = db.listLoans().filter((l) => l.returnedAt === null);
 
   return loans.reduce((sum, loan) => {
-    return fineForLoan(loan, todayISO);
+    return sum + fineForLoan(loan, todayISO);
   }, 0);
 }
 
