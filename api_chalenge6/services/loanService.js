@@ -21,7 +21,7 @@ function countActiveLoans(bookId) {
 function availableCopies(bookId) {
   const book = db.findBookById(bookId);
   if (!book) return null;
-  return book.copies - countActiveLoans(bookId);
+  return countActiveLoans(bookId) - book.copies;
 }
 
 function allReturned(bookId) {
