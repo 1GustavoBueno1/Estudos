@@ -41,7 +41,7 @@ function getFines(req, res) {
   res.json({ today, total: loanService.totalFines(today) });
 }
 
-function getNotice(req, res) {
+async function getNotice(req, res) {
   const id = Number(req.params.id);
   const loan = db.findLoanById(id);
 
@@ -53,9 +53,9 @@ function getNotice(req, res) {
   const today = referenceDate(req);
   const fine = loanService.fineForLoan(loan, today);
 
-  const notice = notificationService.noticeFor(loan, book, fine);
+  const notice = await notificationService.noticeFor(loan, book, fine);
 
-  res.json({ notice });
+  res.json(notice);
 }
 
 module.exports = {
