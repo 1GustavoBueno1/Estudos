@@ -26,7 +26,7 @@ function findBookById(id) {
 }
 
 function listLoans() {
-  return loans;
+  return [...loans]
 }
 
 function findLoanById(id) {
