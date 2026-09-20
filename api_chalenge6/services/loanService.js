@@ -15,13 +15,13 @@ function fineForLoan(loan, todayISO) {
 
 function countActiveLoans(bookId) {
   const loans = db.listLoansByBook(bookId);
-  return loans.filter((l) => l.bookId === bookId).length;
+  return loans.filter((l) => l.returnedAt === null).length;
 }
 
 function availableCopies(bookId) {
   const book = db.findBookById(bookId);
   if (!book) return null;
-  return countActiveLoans(bookId) - book.copies;
+  return  book.copies - countActiveLoans(bookId);
 }
 
 function allReturned(bookId) {
