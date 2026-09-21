@@ -9,8 +9,7 @@ function isInTrial(sub, todayISO) {
 
 // Essa assinatura deve ser cobrada no ciclo de hoje?
 function shouldBill(sub) {
-  return sub.status === "active";
-}
+  return sub.status === "active" && !sub.canceledAt}
 
 // Preco mensal que essa assinatura paga, ja com o desconto dela aplicado.
 function priceFor(sub) {

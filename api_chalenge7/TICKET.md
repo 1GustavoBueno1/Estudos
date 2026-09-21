@@ -49,7 +49,7 @@ desenvolvedora. Como todo ticket de verdade:
 > nada. Me assustou. Nao sei se sou eu que to fazendo algo errado.
 >
 > **4.** O Fabio assinou o plano Pro semana passada e ele nao aparece na receita.
-> Ele e cliente novo mas ja e cliente, entao deveria contar, ne? Da uma olhada.
+> Ele e cliente novo mas ja e cliente, entao deveria contar, ne? Da uma olhada. 
 >
 > Qualquer coisa me chama.
 
