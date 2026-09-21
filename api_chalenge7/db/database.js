@@ -77,7 +77,8 @@ function listPlans() {
 }
 
 function findPlanById(id) {
-  return plans.find((p) => p.id === id) || null;
+  const plan = plans.find((p) => p.id === id)
+  return {...plan} || null;
 }
 
 function listSubscriptions() {
