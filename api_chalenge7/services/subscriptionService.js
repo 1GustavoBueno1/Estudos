@@ -7,6 +7,7 @@ function cancelSubscription(id, todayISO) {
   if (!sub) return null;
 
   sub.canceledAt = todayISO;
+  sub.status = "canceled"
 
   return sub;
 }
