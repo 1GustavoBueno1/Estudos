@@ -4,7 +4,7 @@ const db = require("../db/database");
 // O periodo de teste vale ate o fim do dia de trialEndsAt.
 function isInTrial(sub, todayISO) {
   if (!sub.trialEndsAt) return false;
-  return new Date(todayISO) < new Date(sub.trialEndsAt);
+  return new Date(todayISO) <= new Date(sub.trialEndsAt);
 }
 
 // Essa assinatura deve ser cobrada no ciclo de hoje?
