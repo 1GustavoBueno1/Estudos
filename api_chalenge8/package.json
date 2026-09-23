@@ -1,0 +1,12 @@
+{
+  "name": "desafio-10-loja",
+  "version": "1.0.0",
+  "description": "Desafio 10 - API de loja (pedidos, estoque, cupons)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
