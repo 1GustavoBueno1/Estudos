@@ -56,11 +56,9 @@ async function renewAll(todayISO) {
   const subs = db
     .listSubscriptions()
     .filter((s) => shouldBill(s) && !isInTrial(s, todayISO));
-
-  const invoices = subs.map(async (sub) => {
-    const invoice = await createInvoice(sub, todayISO);
-    return invoice;
-  });
+  const invoices = await Promise.all(subs.map(async (sub) => 
+    createInvoice(sub, todayISO)
+  ));
 
   return invoices;
 }
