@@ -24,19 +24,21 @@ function validateCoupon(code, subtotal, todayISO) {
       error: `pedido minimo de R$ ${coupon.minSubtotal} pra esse cupom`,
     };
   }
+  return { ok: true };
+}
 
-  coupon.uses += 1;
-
+function discountCoupon(code, subtotal) {
+  const coupon = db.findCoupon(code);
   const discount =
     coupon.type === "percent"
       ? round2(subtotal * (coupon.value / 100))
       : Math.min(coupon.value, subtotal);
-
-  return { ok: true, discount };
+      coupon.uses += 1;
+  return { ok: true , discount};
 }
 
 function listCoupons() {
   return db.listCoupons();
 }
 
-module.exports = { validateCoupon, listCoupons };
+module.exports = { validateCoupon, listCoupons, discountCoupon };
