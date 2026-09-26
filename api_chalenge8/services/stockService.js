@@ -2,6 +2,14 @@ const db = require("../db/database");
 
 // Confere se existe estoque suficiente pra todos os itens do pedido.
 function checkAvailability(items) {
+  const quantities = {};
+  for (const item of items) {
+    if (!quantities[item.productId]) {
+      quantities[item.productId] = 0;
+    }
+
+    quantities[item.productId] += item.qty;
+  }
   for (const item of items) {
     const product = db.findProduct(item.productId);
 
@@ -13,7 +21,7 @@ function checkAvailability(items) {
       return { ok: false, error: "quantidade invalida" };
     }
 
-    if (product.stock < item.qty) {
+    if (product.stock < quantities[item.productId]) {
       return { ok: false, error: `estoque insuficiente para ${product.name}` };
     }
   }

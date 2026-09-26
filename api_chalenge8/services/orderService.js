@@ -22,7 +22,6 @@ function createOrder({ customer, items, coupon }, todayISO) {
   if (!customer || !Array.isArray(items) || items.length === 0) {
     throw badRequest("pedido precisa de cliente e de pelo menos um item");
   }
-
   const availability = stockService.checkAvailability(items);
   if (!availability.ok) {
     throw badRequest(availability.error);
