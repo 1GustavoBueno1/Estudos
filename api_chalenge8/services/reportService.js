@@ -7,7 +7,7 @@ function salesReport(fromISO, toISO) {
   const orders = db
     .listOrders()
     .filter((o) => o.createdAt >= fromISO && o.createdAt <= toISO)
-    .filter((o) => o.status !== "canceled");
+    .filter((o) => o.status !== "cancelled");
 
   const total = round2(orders.reduce((sum, o) => sum + o.total, 0));
 
