@@ -73,7 +73,9 @@ function createOrder({ customer, items, coupon }, todayISO) {
 function cancelOrder(id) {
   const order = db.findOrder(id);
   if (!order) return null;
-
+  if (order.status === "cancelled") {
+    throw badRequest("Pedido já cancelado")
+  }
   stockService.release(order.items);
   order.status = "cancelled";
 
