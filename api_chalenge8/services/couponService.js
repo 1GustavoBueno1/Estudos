@@ -24,7 +24,11 @@ function validateCoupon(code, subtotal, todayISO) {
       error: `pedido minimo de R$ ${coupon.minSubtotal} pra esse cupom`,
     };
   }
-  return { ok: true };
+  const discount =
+    coupon.type === "percent"
+      ? round2(subtotal * (coupon.value / 100))
+      : Math.min(coupon.value, subtotal);
+  return { ok: true, discount };
 }
 
 function discountCoupon(code, subtotal) {

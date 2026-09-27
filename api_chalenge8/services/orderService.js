@@ -26,7 +26,6 @@ function createOrder({ customer, items, coupon }, todayISO) {
   if (!availability.ok) {
     throw badRequest(availability.error);
   }
-  stockService.reserve(items);
   const lines = items.map((item) => {
     const product = db.findProduct(item.productId);
     return {
@@ -47,8 +46,8 @@ function createOrder({ customer, items, coupon }, todayISO) {
     if (!result.ok) {
       throw badRequest(result.error);
     }
-    const cupom = couponService.discountCoupon(coupon, subtotal)
-    discount = cupom.discount;
+    couponService.discountCoupon(coupon)
+    discount = result.discount;
   }
   const afterDiscount = round2(subtotal - discount);
   const shipping = shippingFor(afterDiscount);
