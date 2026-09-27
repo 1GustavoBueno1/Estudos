@@ -49,6 +49,7 @@ function createOrder({ customer, items, coupon }, todayISO) {
     couponService.discountCoupon(coupon)
     discount = result.discount;
   }
+  stockService.reserve(items);
   const afterDiscount = round2(subtotal - discount);
   const shipping = shippingFor(afterDiscount);
   const total = round2(afterDiscount + shipping);
