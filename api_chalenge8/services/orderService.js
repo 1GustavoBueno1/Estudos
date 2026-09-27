@@ -46,7 +46,7 @@ function createOrder({ customer, items, coupon }, todayISO) {
     if (!result.ok) {
       throw badRequest(result.error);
     }
-    couponService.discountCoupon(coupon)
+    couponService.discountCoupon()
     discount = result.discount;
   }
   stockService.reserve(items);
