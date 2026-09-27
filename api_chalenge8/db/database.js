@@ -27,7 +27,7 @@ const coupons = [
     minSubtotal: 100,
     expiresAt: "2026-09-30",
     maxUses: 5,
-    uses: 5,
+    uses: 2,
   },
   {
     code: "INVERNO",
