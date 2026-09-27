@@ -31,14 +31,8 @@ function validateCoupon(code, subtotal, todayISO) {
   return { ok: true, discount };
 }
 
-function discountCoupon(code, subtotal) {
-  const coupon = db.findCoupon(code);
-  const discount =
-    coupon.type === "percent"
-      ? round2(subtotal * (coupon.value / 100))
-      : Math.min(coupon.value, subtotal);
-      coupon.uses += 1;
-  return { ok: true , discount};
+function discountCoupon() {
+  coupon.uses += 1;
 }
 
 function listCoupons() {
