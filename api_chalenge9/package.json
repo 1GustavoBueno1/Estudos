@@ -1,0 +1,13 @@
+{
+  "name": "desafio-11-loja-api",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "repro": "node --test repro/*.test.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

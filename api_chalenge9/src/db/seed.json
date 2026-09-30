@@ -1,0 +1,26 @@
+{
+  "customers": [
+    { "id": 1, "name": "Ana Lima", "email": "ana@example.com" },
+    { "id": 2, "name": "Bruno Rocha", "email": "bruno@example.com" }
+  ],
+  "products": [
+    { "id": 1, "name": "Caneca", "price": 19.99, "stock": 10 },
+    { "id": 2, "name": "Camiseta", "price": 59.9, "stock": 5 },
+    { "id": 3, "name": "Boné", "price": 34.5, "stock": 8 },
+    { "id": 4, "name": "Garrafa", "price": 45.0, "stock": 3 },
+    { "id": 5, "name": "Mochila", "price": 149.9, "stock": 4 },
+    { "id": 6, "name": "Chaveiro", "price": 9.99, "stock": 50 },
+    { "id": 7, "name": "Caderno", "price": 24.9, "stock": 20 },
+    { "id": 8, "name": "Caneta", "price": 4.5, "stock": 100 },
+    { "id": 9, "name": "Adesivo", "price": 2.0, "stock": 200 },
+    { "id": 10, "name": "Pôster", "price": 39.9, "stock": 6 },
+    { "id": 11, "name": "Almofada", "price": 54.0, "stock": 7 },
+    { "id": 12, "name": "Copo", "price": 12.0, "stock": 30 }
+  ],
+  "coupons": [
+    { "code": "BEMVINDO10", "type": "percent", "value": 10, "minSubtotal": 0, "maxUses": 100, "uses": 0, "expiresAt": "2026-12-31" },
+    { "code": "DEZREAIS", "type": "fixed", "value": 10, "minSubtotal": 50, "maxUses": 100, "uses": 0, "expiresAt": "2026-12-31" },
+    { "code": "ULTIMO20", "type": "percent", "value": 20, "minSubtotal": 0, "maxUses": 1, "uses": 0, "expiresAt": "2026-12-31" },
+    { "code": "VELHO15", "type": "percent", "value": 15, "minSubtotal": 0, "maxUses": 100, "uses": 0, "expiresAt": "2025-01-31" }
+  ]
+}
