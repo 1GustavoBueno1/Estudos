@@ -10,7 +10,7 @@ function list({ page, pageSize } = {}) {
 
   const total = db.products.length;
   const start = (page - 1) * pageSize;
-  const items = db.products.slice(start, start + pageSize - 1);
+  const items = db.products.slice(start, start + pageSize);
 
   return {
     items,
