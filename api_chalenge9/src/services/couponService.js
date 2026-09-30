@@ -25,10 +25,10 @@ function validate(code, subtotal) {
   return coupon;
 }
 
-function discountFor(coupon, subtotal, shipping) {
+function discountFor(coupon, subtotal) {
   let discount;
   if (coupon.type === 'percent') {
-    discount = ((subtotal + shipping) * coupon.value) / 100;
+    discount = (subtotal * coupon.value) / 100;
   } else {
     discount = coupon.value;
   }
