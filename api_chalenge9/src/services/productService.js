@@ -35,5 +35,8 @@ function updatePrice(id, price) {
   product.price = price;
   return product;
 }
+function returnProducts(produto) {
+  const product = getById(produto.productId)
+  product.stock += produto.quantity}
 
-module.exports = { list, getById, updatePrice };
+module.exports = { list, getById, updatePrice, returnProducts  };

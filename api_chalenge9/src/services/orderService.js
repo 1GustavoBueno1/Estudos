@@ -3,6 +3,7 @@ const { AppError } = require('../utils/errors');
 const clock = require('../utils/clock');
 const couponService = require('./couponService');
 const { shippingFor } = require('./shippingService');
+const {returnProducts} = require('./productService')
 
 const TRANSITIONS = {
   pending: ['paid'],
@@ -117,8 +118,10 @@ function cancel(id) {
   if (order.status === 'shipped' || order.status === 'delivered') {
     throw new AppError(409, 'Pedido já enviado não pode ser cancelado');
   }
+  order.items.forEach(produto => {returnProducts(produto)})
   order.status = 'cancelled';
   return present(order);
 }
+
 
 module.exports = { create, getById, changeStatus, cancel };
