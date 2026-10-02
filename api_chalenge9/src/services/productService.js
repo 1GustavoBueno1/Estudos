@@ -17,7 +17,7 @@ function list({ page, pageSize } = {}) {
     page,
     pageSize,
     total,
-    totalPages: Math.floor(total / pageSize),
+    totalPages: Math.ceil(total / pageSize),
   };
 }
 
