@@ -115,8 +115,8 @@ function changeStatus(id, status) {
 
 function cancel(id) {
   const order = findOrder(id);
-  if (order.status === 'shipped' || order.status === 'delivered') {
-    throw new AppError(409, 'Pedido já enviado não pode ser cancelado');
+  if (!['pending', 'paid'].includes(order.status)) {
+    throw new AppError(409, 'Pedido não pode ser mais cancelado')
   }
   order.items.forEach(produto => {returnProducts(produto)})
   order.status = 'cancelled';
