@@ -5,6 +5,7 @@ const couponService = require('./couponService');
 const { shippingFor } = require('./shippingService');
 const {returnProducts} = require('./productService')
 
+
 const TRANSITIONS = {
   pending: ['paid'],
   paid: ['shipped'],
@@ -41,6 +42,7 @@ function findOrder(id) {
 }
 
 function create({ customerId, items, couponCode }) {
+  const quantities = {}
   if (!db.customers.some((c) => c.id === customerId)) {
     throw new AppError(404, 'Cliente não encontrado');
   }
@@ -49,15 +51,29 @@ function create({ customerId, items, couponCode }) {
   }
 
   // 1) valida cada item
-  const lines = items.map((item) => {
-    const product = db.products.find((p) => p.id === item.productId);
-    if (!product) throw new AppError(404, `Produto ${item.productId} não encontrado`);
-    if (!item.quantity) throw new AppError(400, 'Quantidade inválida');
-    if (item.quantity > product.stock) {
-      throw new AppError(409, `Estoque insuficiente para ${product.name}`);
+  for (const item of items) {
+    if (!quantities[item.productId]) {
+      quantities[item.productId] = 0;
     }
-    return { product, quantity: item.quantity };
-  });
+    quantities[item.productId] += item.quantity
+  }
+  const lines = Object.entries(quantities).map(([productId, quantity]) => {
+  const product = db.products.find((p) => p.id === Number(productId));
+
+  if (!product) {
+    throw new AppError(404, `Produto ${productId} não encontrado`);
+  }
+
+  if (!Number.isInteger(quantity) || quantity <= 0) {
+    throw new AppError(400, 'Quantidade inválida');
+  }
+
+  if (quantity > product.stock) {
+    throw new AppError(409, `Estoque insuficiente para ${product.name}`);
+  }
+
+  return { product, quantity };
+});
 
   // 2) totais
   const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.quantity, 0);
