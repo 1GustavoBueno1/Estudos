@@ -76,7 +76,7 @@ function create({ customerId, items, couponCode }) {
 });
 
   // 2) totais
-  const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.quantity, 0);
+  const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.quantity, 0).toFixed(2);
   const shipping = shippingFor(subtotal);
 
   let coupon = null;
@@ -89,7 +89,7 @@ function create({ customerId, items, couponCode }) {
   lines.forEach((l) => {
     l.product.stock -= l.quantity;
   });
-
+  const total = subtotal - discount + shipping
   // 5) grava o pedido
   const order = {
     id: db.nextOrderId++,
@@ -103,7 +103,7 @@ function create({ customerId, items, couponCode }) {
     subtotal,
     discount,
     shipping,
-    total: subtotal - discount + shipping,
+    total: total.toFixed(2),
     status: 'pending',
     createdAt: clock.now().toISOString(),
   };
