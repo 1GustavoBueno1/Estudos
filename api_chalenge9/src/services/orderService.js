@@ -63,18 +63,16 @@ function create({ customerId, items, couponCode }) {
   const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.quantity, 0);
   const shipping = shippingFor(subtotal);
 
-  // 3) baixa o estoque
-  lines.forEach((l) => {
-    l.product.stock -= l.quantity;
-  });
-
-  // 4) cupom
   let coupon = null;
   let discount = 0;
   if (couponCode) {
     coupon = couponService.validate(couponCode, subtotal);
     discount = couponService.discountFor(coupon, subtotal, shipping);
   }
+  // 3) baixa o estoque
+  lines.forEach((l) => {
+    l.product.stock -= l.quantity;
+  });
 
   // 5) grava o pedido
   const order = {
