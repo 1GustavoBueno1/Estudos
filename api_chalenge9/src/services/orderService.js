@@ -3,8 +3,8 @@ const { AppError } = require('../utils/errors');
 const clock = require('../utils/clock');
 const couponService = require('./couponService');
 const { shippingFor } = require('./shippingService');
-const {returnProducts} = require('./productService')
-
+const {returnProducts} = require('./productService');
+const { round2 } = require('../utils/money');
 
 const TRANSITIONS = {
   pending: ['paid'],
