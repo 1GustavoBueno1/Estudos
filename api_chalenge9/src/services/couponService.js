@@ -1,6 +1,5 @@
 const { db } = require('../db/database');
 const { AppError } = require('../utils/errors');
-const { round2 } = require('../utils/money');
 const clock = require('../utils/clock');
 
 function findByCode(code) {
