@@ -10,10 +10,11 @@ function findByCode(code) {
 // Valida o cupom para um pedido com o subtotal informado.
 // Lança 422 se o cupom não puder ser usado.
 function validate(code, subtotal) {
+  const today = clock.now().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });
   const coupon = findByCode(code);
   if (!coupon) throw new AppError(422, 'Cupom inválido');
 
-  if (new Date(coupon.expiresAt) < clock.now()) {
+  if (coupon.expiresAt < today) {
     throw new AppError(422, 'Cupom expirado');
   }
   if (coupon.uses >= coupon.maxUses) {
