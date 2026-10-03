@@ -16,7 +16,7 @@ function validate(code, subtotal) {
   if (new Date(coupon.expiresAt) < clock.now()) {
     throw new AppError(422, 'Cupom expirado');
   }
-  if (coupon.uses > coupon.maxUses) {
+  if (coupon.uses >= coupon.maxUses) {
     throw new AppError(422, 'Cupom esgotado');
   }
   if (subtotal < coupon.minSubtotal) {
