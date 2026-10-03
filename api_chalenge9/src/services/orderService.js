@@ -17,8 +17,7 @@ const TRANSITIONS = {
 // Monta a resposta enviada ao cliente.
 function present(order) {
   const items = order.items.map((i) => {
-    const product = db.products.find((p) => p.id === i.productId);
-    return { productId: i.productId, quantity: i.quantity, unitPrice: product.price };
+    return { productId: i.productId, quantity: i.quantity, unitPrice: i.unitPrice};
   });
   const subtotal = round2(items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0));
   return {
@@ -55,6 +54,9 @@ function create({ customerId, items, couponCode }) {
     if (!quantities[item.productId]) {
       quantities[item.productId] = 0;
     }
+    if (!item, !Number.isInteger(quantity) || quantity <= 0) {
+    throw new AppError(400, 'Quantidade inválida');
+  }
     quantities[item.productId] += item.quantity
   }
   const lines = Object.entries(quantities).map(([productId, quantity]) => {
@@ -62,10 +64,6 @@ function create({ customerId, items, couponCode }) {
 
   if (!product) {
     throw new AppError(404, `Produto ${productId} não encontrado`);
-  }
-
-  if (!Number.isInteger(quantity) || quantity <= 0) {
-    throw new AppError(400, 'Quantidade inválida');
   }
 
   if (quantity > product.stock) {
