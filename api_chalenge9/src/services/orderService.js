@@ -20,7 +20,7 @@ function present(order) {
     const product = db.products.find((p) => p.id === i.productId);
     return { productId: i.productId, quantity: i.quantity, unitPrice: product.price };
   });
-  const subtotal = items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0);
+  const subtotal = round2(items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0));
   return {
     id: order.id,
     customerId: order.customerId,
@@ -29,7 +29,7 @@ function present(order) {
     subtotal,
     discount: order.discount,
     shipping: order.shipping,
-    total: subtotal - order.discount + order.shipping,
+    total: round2(subtotal - order.discount + order.shipping),
     status: order.status,
     createdAt: order.createdAt,
   };
@@ -76,7 +76,7 @@ function create({ customerId, items, couponCode }) {
 });
 
   // 2) totais
-  const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.quantity, 0).toFixed(2);
+  const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.quantity, 0);
   const shipping = shippingFor(subtotal);
 
   let coupon = null;
@@ -89,7 +89,6 @@ function create({ customerId, items, couponCode }) {
   lines.forEach((l) => {
     l.product.stock -= l.quantity;
   });
-  const total = subtotal - discount + shipping
   // 5) grava o pedido
   const order = {
     id: db.nextOrderId++,
@@ -103,7 +102,7 @@ function create({ customerId, items, couponCode }) {
     subtotal,
     discount,
     shipping,
-    total: total.toFixed(2),
+    total: subtotal - discount + shipping,
     status: 'pending',
     createdAt: clock.now().toISOString(),
   };
