@@ -1,0 +1,22 @@
+{
+  "members": [
+    { "id": 1, "name": "Ana Lima", "type": "regular", "unpaidFines": 0 },
+    { "id": 2, "name": "Bruno Rocha", "type": "student", "unpaidFines": 0 },
+    { "id": 3, "name": "Carla Souza", "type": "regular", "unpaidFines": 5 },
+    { "id": 4, "name": "Diego Alves", "type": "student", "unpaidFines": 0 }
+  ],
+  "books": [
+    { "id": 1, "title": "Dom Casmurro", "copies": 2, "available": 2, "isReference": false },
+    { "id": 2, "title": "Capitães da Areia", "copies": 1, "available": 1, "isReference": false },
+    { "id": 3, "title": "O Cortiço", "copies": 3, "available": 3, "isReference": false },
+    { "id": 4, "title": "Vidas Secas", "copies": 1, "available": 1, "isReference": false },
+    { "id": 5, "title": "Memórias Póstumas de Brás Cubas", "copies": 2, "available": 2, "isReference": false },
+    { "id": 6, "title": "Grande Sertão: Veredas", "copies": 1, "available": 1, "isReference": false },
+    { "id": 7, "title": "Iracema", "copies": 4, "available": 4, "isReference": false },
+    { "id": 8, "title": "A Hora da Estrela", "copies": 2, "available": 2, "isReference": false },
+    { "id": 9, "title": "O Guarani", "copies": 1, "available": 1, "isReference": false },
+    { "id": 10, "title": "Atlas Geográfico", "copies": 1, "available": 1, "isReference": true },
+    { "id": 11, "title": "Quincas Borba", "copies": 2, "available": 2, "isReference": false },
+    { "id": 12, "title": "Macunaíma", "copies": 3, "available": 3, "isReference": false }
+  ]
+}

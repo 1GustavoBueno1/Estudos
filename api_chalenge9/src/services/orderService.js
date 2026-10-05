@@ -51,6 +51,9 @@ function create({ customerId, items, couponCode }) {
 
   // 1) valida cada item
   for (const item of items) {
+    if (!item || !Number.isInteger(item.quantity) || item.quantity <= 0) {
+    throw new AppError(400, 'Quantidade inválida')
+    };
     if (!quantities[item.productId]) {
       quantities[item.productId] = 0;
     }
@@ -73,7 +76,7 @@ function create({ customerId, items, couponCode }) {
 });
 
   // 2) totais
-  const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.quantity, 0);
+  const subtotal = round2(lines.reduce((sum, l) => sum + l.product.price * l.quantity, 0));
   const shipping = shippingFor(subtotal);
 
   let coupon = null;
@@ -117,7 +120,7 @@ function changeStatus(id, status) {
   const order = findOrder(id);
   const allowed = TRANSITIONS[order.status] || [];
   if (!allowed.includes(status)) {
-    throw new AppError(409, `Não é possível ir de ${order.status} para ${status}`);
+    throw new AppError(400, `Não é possível ir de ${order.status} para ${status}`);
   }
   order.status = status;
   return present(order);

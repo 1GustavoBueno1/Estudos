@@ -1,6 +1,7 @@
 const { db } = require('../db/database');
 const { AppError } = require('../utils/errors');
 const clock = require('../utils/clock');
+const { round2 } = require('../utils/money');
 
 function findByCode(code) {
   return db.coupons.find((c) => c.code === String(code).toUpperCase());
