@@ -10,7 +10,7 @@ function list({ page, pageSize, q, available } = {}) {
 
   let books = db.books;
   if (available === 'true') {
-    books = books.filter((b) => b.available > 1);
+    books = books.filter((b) => b.available >= 1);
   }
 
   const total = books.length;
