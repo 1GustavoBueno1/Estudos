@@ -11,10 +11,10 @@ function lateDays(dueAt, returnedAt) {
 
 function fineFor(member, rules, dueAt, returnedAt) {
   const days = lateDays(dueAt, returnedAt);
-  let fine = days * FINE_PER_DAY;
-  let value = Math.min(fine, FINE_CAP)
-  fine = value * (1 - rules.fineDiscount);
-  return round2(fine);
+  const baseFine = days * FINE_PER_DAY;
+  const cappedFine = Math.min(baseFine, FINE_CAP)
+  const finalFine = cappedFine * (1 - rules.fineDiscount);
+  return round2(finalFine);
 }
 
 module.exports = { lateDays, fineFor, FINE_PER_DAY, FINE_CAP };
