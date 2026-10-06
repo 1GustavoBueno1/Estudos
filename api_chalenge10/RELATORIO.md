@@ -27,4 +27,4 @@ você rodou para os bugs do bloco B (comando e resultado). "Acho que corrigi" n�
 3 = nao e bug, segundo a regra R2 o livro fica emprestado por 14 dias, como ela renovou dia 3 dia 17 fecha certo
 4 = não, não e abuso e apenas a regra R10 em vigor, para ela nao ser multada ela deveria ter entregado o livro antes de 23:59:59, mas ela entregou apos este horario e segundo as regras ela deve sim ser multada
 5 = segundo a propria regra R14 ela nao pode renovar um emprestimo atrasado
-6 = 
+6 = segundo a regra R6 livros de referencia nao podem ser emprestados e como o atlas e um ele nao pode ser emprestado
