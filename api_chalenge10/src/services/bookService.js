@@ -12,14 +12,14 @@ function list({ page, pageSize, q, available } = {}) {
   if (available === 'true') {
     books = books.filter((b) => b.available >= 1);
   }
+  if (q) {
+    const term = String(q).toLowerCase();
+    books = books.filter((b) => b.title.toLowerCase().includes(term));
+  }
 
   const total = books.length;
   const start = (page - 1) * pageSize;
-  let items = books.slice(start, start + pageSize);
-  if (q) {
-    const term = String(q).toLowerCase();
-    items = items.filter((b) => b.title.toLowerCase().includes(term));
-  }
+  const items = books.slice(start, start + pageSize);
   return {
     items,
     page,

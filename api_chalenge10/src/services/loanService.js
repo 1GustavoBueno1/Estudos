@@ -41,24 +41,25 @@ function create({ memberId, bookId }) {
   if (book.available <= 0) {
     throw new AppError(409, 'Nenhuma cópia disponível');
   }
-  book.available -= 1;
-  if (db.loans.some((l) => l.memberId === member.id && l.bookId === book.id)) {
+  if (db.loans.some((l) => l.memberId === member.id && l.bookId === book.id && l.status === 'active')) {
     throw new AppError(409, 'O membro já está com este livro');
   }
   if (member.unpaidFines > 0) {
     throw new AppError(422, 'Membro com multa pendente');
   }
-  if (memberService.activeLoans(member).length > rules.maxActive) {
+  if (memberService.activeLoans(member).length >= rules.maxActive) {
     throw new AppError(422, 'Limite de empréstimos ativos atingido');
   }
 
+  // Só baixa o estoque depois de todas as validações (R8).
+  book.available -= 1;
   const now = clock.now();
   const loan = {
     id: db.nextLoanId++,
     memberId: member.id,
     bookId: book.id,
     loanedAt: now.toISOString(),
-    dueAt: new Date(now.getTime() + rules.termDays * 24 * 60 * 60 * 1000).toISOString(),
+    dueAt: endOfDay(addDays(brtDate(now), rules.termDays)).toISOString(),
     renewals: 0,
     returnedAt: null,
     fine: 0,
@@ -83,7 +84,7 @@ function giveBack(id) {
   const now = clock.now();
 
   const fine = fineFor(member, rules, new Date(loan.dueAt), now);
-  member.unpaidFines = member.unpaidFines + fine;
+  member.unpaidFines = round2(member.unpaidFines + fine);
   book.available += 1;
   loan.returnedAt = now.toISOString();
   loan.fine = fine;
@@ -105,9 +106,9 @@ function renew(id) {
   const member = memberService.getById(loan.memberId);
   const rules = memberService.rulesFor(member);
 
-  // renova por mais 14 dias
+  // renova pelo prazo do tipo de membro, a partir do vencimento atual
   const base = brtDate(new Date(loan.dueAt));
-  loan.dueAt = endOfDay(addDays(base, 14)).toISOString();
+  loan.dueAt = endOfDay(addDays(base, rules.termDays)).toISOString();
   loan.renewals += 1;
   return present(loan);
 }
