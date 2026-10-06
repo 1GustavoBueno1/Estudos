@@ -106,7 +106,7 @@ function renew(id) {
   const rules = memberService.rulesFor(member);
 
   // renova por mais 14 dias
-  const base = brtDate(clock.now());
+  const base = brtDate(new Date(loan.dueAt));
   loan.dueAt = endOfDay(addDays(base, 14)).toISOString();
   loan.renewals += 1;
   return present(loan);
