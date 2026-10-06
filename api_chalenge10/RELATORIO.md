@@ -22,6 +22,6 @@ Cole aqui a saída real do `npm run repro` depois de corrigir tudo, e liste os c
 você rodou para os bugs do bloco B (comando e resultado). "Acho que corrigi" não vale.
 
 
-
+1 = era um bug, nao e nada que envolva regras e sim erro nas regras de negocio, o codigo dava o limite de R$20 apenas no final quando ele ja efetuava o calculo de desconto para estudantes, a solução foi colocar o limitador antes de aplicar o desconto
 2 = Realmente era um bug nao existe regra espeficia para este, era apenas um erro na regra de negocio que ignorava os livro com a quantidade = 1, mostrando apenas os > 1.
 3 = nao e bug, segundo a regra R2 o livro fica emprestado por 14 dias, como ela renovou dia 3 dia 17 fecha certo
