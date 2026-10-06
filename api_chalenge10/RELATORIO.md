@@ -26,3 +26,5 @@ você rodou para os bugs do bloco B (comando e resultado). "Acho que corrigi" n�
 2 = Realmente era um bug nao existe regra espeficia para este, era apenas um erro na regra de negocio que ignorava os livro com a quantidade = 1, mostrando apenas os > 1.
 3 = nao e bug, segundo a regra R2 o livro fica emprestado por 14 dias, como ela renovou dia 3 dia 17 fecha certo
 4 = não, não e abuso e apenas a regra R10 em vigor, para ela nao ser multada ela deveria ter entregado o livro antes de 23:59:59, mas ela entregou apos este horario e segundo as regras ela deve sim ser multada
+5 = segundo a propria regra R14 ela nao pode renovar um emprestimo atrasado
+6 = 
