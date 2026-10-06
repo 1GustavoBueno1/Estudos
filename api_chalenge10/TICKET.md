@@ -11,7 +11,7 @@ a causa dos bugs reais. Use `npm run repro` para reproduzir.
    aparece em `GET /books?available=true`.
 
 3. **Renovação encurtou o prazo.** A Ana pegou "Dom Casmurro" em 01/10 e renovou em 03/10. O novo
-   vencimento ficou em 17/10 e ela reclamou que perdeu dias.
+   vencimento ficou em 17/10 e ela reclamou que perdeu dias., R2 = tudo certo
 
 4. **Multa por poucas horas.** A Ana devolveu um livro às 08h do dia seguinte ao vencimento (poucas
    horas depois do prazo) e foi multada em R$ 0,75. Isso é abuso.

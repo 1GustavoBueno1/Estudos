@@ -9,7 +9,7 @@ Para cada item 1 a 6: **bug real** ou **comportamento correto**?
 |---|----------|---------------|----------|
 | 1 |          |               |          |
 | 2 |          |               |          |
-| 3 |          |               |          |
+|3
 | 4 |          |               |          |
 | 5 |          |               |          |
 | 6 |          |               |          |
@@ -20,3 +20,4 @@ Para cada um: regra violada (Rn), arquivo/linha, como reproduzir, o que você mu
 ## C) Verificação depois da correção
 Cole aqui a saída real do `npm run repro` depois de corrigir tudo, e liste os cenários extras que
 você rodou para os bugs do bloco B (comando e resultado). "Acho que corrigi" não vale.
+3 = nao e bug, segundo a regra R2 o livro fica emprestado por 14 dias, como ela renovou dia 3 dia 17 fecha certo
