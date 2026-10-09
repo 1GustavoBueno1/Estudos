@@ -1,0 +1,13 @@
+{
+  "doctors": [
+    { "id": 1, "name": "Dra. Helena Prado", "specialty": "Cardiologia", "price": 180 },
+    { "id": 2, "name": "Dr. Marcos Teixeira", "specialty": "Dermatologia", "price": 150.2 },
+    { "id": 3, "name": "Dra. Paula Nogueira", "specialty": "Pediatria", "price": 120 }
+  ],
+  "patients": [
+    { "id": 1, "name": "Ana Lima", "plan": "particular", "owed": 0 },
+    { "id": 2, "name": "Bruno Rocha", "plan": "convenio", "owed": 0 },
+    { "id": 3, "name": "Carla Souza", "plan": "particular", "owed": 40 },
+    { "id": 4, "name": "Diego Alves", "plan": "convenio", "owed": 0 }
+  ]
+}
