@@ -16,7 +16,7 @@ const MAX_PER_DAY = 2;
 
 // Dois intervalos [início, fim) se sobrepõem?
 function overlaps(aStart, aEnd, bStart, bEnd) {
-  return aStart <= bEnd && bStart <= aEnd;
+  return aStart < bEnd && bStart < aEnd;
 }
 
 // R2: dia útil, múltiplo de 30 min, dentro de um bloco de atendimento.

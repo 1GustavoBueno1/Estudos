@@ -23,3 +23,4 @@ Para cada item: **Bug** ou **Comportamento correto**. Bug: arquivo, causa e corr
 ## C) Verificação depois da correção
 Cole a saída real do `npm run repro` depois de corrigir tudo e liste, em uma tabela curta, o que você
 testou (Postman ou script) para cada bug do bloco B e o resultado. "Acho que corrigi" não vale.
+
