@@ -81,8 +81,8 @@ function cancel(id) {
     throw new AppError(409, 'Consulta já iniciada ou realizada');
   }
 
-  const fee = cancellationFee(appt, start, now);
   const patient = patientService.getById(appt.patientId);
+  const fee = cancellationFee(appt, start, now, patient);
   patient.owed = round2(patient.owed + fee);
   appt.status = 'cancelled';
   appt.fee = fee;
