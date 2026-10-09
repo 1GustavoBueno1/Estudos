@@ -23,8 +23,8 @@ você rodou para os bugs do bloco B (comando e resultado). "Acho que corrigi" n�
 
 
 1 = era um bug, nao e nada que envolva regras e sim erro nas regras de negocio, o codigo dava o limite de R$20 apenas no final quando ele ja efetuava o calculo de desconto para estudantes, a solução foi colocar o limitador antes de aplicar o desconto
-2 = Realmente era um bug nao existe regra espeficia para este, era apenas um erro na regra de negocio que ignorava os livro com a quantidade = 1, mostrando apenas os > 1.
-3 = bug encontrado, ele considerava a data atual ao inves da data final ao emprestimo, a solução foi colcoar a data final do empréstimo
-4 = não, não e abuso e apenas a regra R10 em vigor, para ela nao ser multada ela deveria ter entregado o livro antes de 23:59:59, mas ela entregou apos este horario e segundo as regras ela deve sim ser multada
-5 = segundo a propria regra R14 ela nao pode renovar um emprestimo atrasado
-6 = segundo a regra R6 livros de referencia nao podem ser emprestados e como o atlas e um ele nao pode ser emprestado
+2 = R16, no arquivo loanService era apenas um erro na regra de negocio que ignorava os livro com a quantidade = 1, mostrando apenas os > 1.
+3 = R14 no arquivo loan service, a solução foi colcoar a data final do empréstimo
+4 = R10, ela entregou o livro atrasada
+5 = R14, nao pode renovar emprestismo atrasado
+6 = R6, livros de referencia nao podem ser emprestados
