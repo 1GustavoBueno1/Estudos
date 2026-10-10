@@ -30,7 +30,7 @@ function slots(doctorId, date) {
   const now = clock.now();
   const out = [];
   for (const [from, to] of rules.BLOCKS) {
-    for (let m = from; m <= to; m += rules.SLOT_MINUTES) {
+    for (let m = from; m < to; m += rules.SLOT_MINUTES) {
       const start = atBrt(date, m);
       const end = new Date(start.getTime() + rules.SLOT_MS);
       if (rules.leadTimeViolation(start, now)) continue;
