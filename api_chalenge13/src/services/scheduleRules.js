@@ -65,11 +65,22 @@ function doctorIsBusy(doctorId, start, end, ignoreId) {
       overlaps(start, end, new Date(a.startsAt), new Date(a.endsAt))
   );
 }
+function pacienteIsBusy(pacienteId, start, end, ignoreId) {
+  return db.appointments.some(
+    (a) =>
+      a.id !== ignoreId &&
+      a.patientId ===  pacienteId &&
+      overlaps(start, end, new Date(a.startsAt), new Date(a.endsAt))
+  );
+}
 
 // R4 e R5: conflitos de agenda do médico e do paciente.
 function assertNoConflicts({ doctorId, patientId, start, end, ignoreId }) {
   if (doctorIsBusy(doctorId, start, end, ignoreId)) {
     throw new AppError(409, 'Horário indisponível para este médico');
+  }
+  if (pacienteIsBusy(patientId, start, end, ignoreId)) {
+    throw new AppError(409, 'Você ja possui consulta marcada');
   }
 }
 

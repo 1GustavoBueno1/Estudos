@@ -11,9 +11,9 @@ Todos os horários e datas de regra são no relógio de **Brasília (UTC-3)**.
 - **R2.** Atendimento de segunda a sexta, em dois blocos: 08:00–12:00 e 14:00–18:00. Cada consulta dura 30 minutos e começa em múltiplo de 30 min, sem segundos. A última do bloco da manhã começa às 11:30 e a da tarde às 17:30. Fora disso: 422.
 - **R3.** Antecedência: a consulta precisa começar **pelo menos 2 horas depois de agora** (exatamente 2h é permitido) e a data dela pode ser **no máximo 60 dias de calendário** depois da data de hoje. Fora disso: 422.
 - **R4.** Um médico não pode ter duas consultas agendadas que se sobreponham. Os intervalos são `[início, fim)`: uma consulta que termina às 09:30 **não** conflita com outra que começa às 09:30. Consulta cancelada não ocupa horário. Conflito: 409.
-- **R5.** Um paciente também não pode ter duas consultas agendadas que se sobreponham, mesmo com médicos diferentes (mesma semântica de intervalo do R4). Conflito: 409.
-- **R6.** No máximo **2 consultas agendadas por paciente por dia** (dia de Brasília). A 3ª é recusada (422). Consulta cancelada não conta.
-- **R7.** Paciente com débito (`owed > 0`) não pode agendar (422). `POST /patients/:id/pay` quita todo o débito de uma vez.
+-x **R5.** Um paciente também não pode ter duas consultas agendadas que se sobreponham, mesmo com médicos diferentes (mesma semântica de intervalo do R4). Conflito: 409.
+-- **R6.** No máximo **2 consultas agendadas por paciente por dia** (dia de Brasília). A 3ª é recusada (422). Consulta cancelada não conta.
+-- **R7.** Paciente com débito (`owed > 0`) não pode agendar (422). `POST /patients/:id/pay` quita todo o débito de uma vez.
 
 ## Preço
 - **R8.** O preço da consulta é o `price` do médico; paciente de plano `convenio` tem 30% de desconto (preço × 0,70, arredondado pelo R1). O preço é gravado na consulta no momento do agendamento e não muda depois.
