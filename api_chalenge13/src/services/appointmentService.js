@@ -61,7 +61,7 @@ function create({ patientId, doctorId, startsAt }) {
     startsAt: start.toISOString(),
     endsAt: end.toISOString(),
     status: 'scheduled',
-    price: doctor.price * (1 - PLAN_DISCOUNT[patient.plan]),
+    price: round2(doctor.price * (1 - PLAN_DISCOUNT[patient.plan])),
     fee: 0,
     reschedules: 0,
     cancelledAt: null,
