@@ -41,7 +41,7 @@ function leadTimeViolation(start, now) {
   if (start.getTime() <= now.getTime() + MIN_LEAD_MS) {
     return 'Agendamento exige antecedência mínima de 2 horas';
   }
-  if (diffDays(now.toISOString().slice(0, 10), brtDate(start)) > MAX_DAYS_AHEAD) {
+  if (diffDays(brtDate(now), brtDate(start)) > MAX_DAYS_AHEAD) {
     return 'Agendamento permitido somente até 60 dias à frente';
   }
   return null;
