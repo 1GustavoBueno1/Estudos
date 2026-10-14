@@ -71,6 +71,7 @@ function pacienteIsBusy(pacienteId, start, end, ignoreId) {
     (a) =>
       a.id !== ignoreId &&
       a.patientId ===  pacienteId &&
+      a.status !== "cancelled" &&
       overlaps(start, end, new Date(a.startsAt), new Date(a.endsAt))
   );
 }
