@@ -38,7 +38,7 @@ function assertWorkingSlot(start) {
 
 // R3: antecedência mínima e janela máxima. Devolve a mensagem de erro ou null.
 function leadTimeViolation(start, now) {
-  if (start.getTime() <= now.getTime() + MIN_LEAD_MS) {
+  if (start.getTime() < now.getTime() + MIN_LEAD_MS) {
     return 'Agendamento exige antecedência mínima de 2 horas';
   }
   if (diffDays(brtDate(now), brtDate(start)) > MAX_DAYS_AHEAD) {
