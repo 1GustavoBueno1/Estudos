@@ -105,7 +105,7 @@ function reschedule(id, { startsAt } = {}) {
   if (appt.reschedules >= 1) {
     throw new AppError(409, 'Consulta já foi remarcada uma vez');
   }
-  if (newStart.getTime() - now.getTime() < 24 * rules.HOUR_MS) {
+  if (oldStart.getTime() - now.getTime() < 24 * rules.HOUR_MS) {
     throw new AppError(409, 'Remarcação exige 24 horas de antecedência');
   }
 
