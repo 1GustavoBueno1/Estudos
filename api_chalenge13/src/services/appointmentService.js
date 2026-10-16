@@ -7,6 +7,7 @@ const patientService = require('./patientService');
 const doctorService = require('./doctorService');
 const rules = require('./scheduleRules');
 const { cancellationFee } = require('./pricing');
+const { assertWorkingSlot} = require('../services/scheduleRules')
 
 const PLAN_DISCOUNT = { particular: 0, convenio: 0.3 };
 
@@ -108,7 +109,7 @@ function reschedule(id, { startsAt } = {}) {
   if (oldStart.getTime() - now.getTime() < 24 * rules.HOUR_MS) {
     throw new AppError(409, 'Remarcação exige 24 horas de antecedência');
   }
-
+  assertWorkingSlot(newStart)
   rules.assertLeadTime(newStart, now);
   const newEnd = new Date(newStart.getTime() + rules.SLOT_MS);
   rules.assertNoConflicts({

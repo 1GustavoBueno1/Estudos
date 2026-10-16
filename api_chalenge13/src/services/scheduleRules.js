@@ -1,7 +1,6 @@
 const { db } = require('../db/database');
 const { AppError } = require('../utils/errors');
 const { brtDate, brtParts, diffDays } = require('../utils/dates');
-
 const SLOT_MINUTES = 30;
 const SLOT_MS = SLOT_MINUTES * 60 * 1000;
 const HOUR_MS = 60 * 60 * 1000;
