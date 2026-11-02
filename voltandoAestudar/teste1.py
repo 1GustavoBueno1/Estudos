@@ -26,6 +26,13 @@ def contar_palavras(texto: str) -> dict[str, int]:
             continue
         retorno[palavra] = retorno.get(palavra, 0) + 1
     return retorno
+pessoas = [{"nome": "Ana", "cidade": "SC"}, {"nome": "Bia", "cidade": "SP"}, {"nome": "Caio", "cidade": "SC"}]
 
+def agrupar(pessoas: list):
+    retorno = {}
+    for p in pessoas:
+        retorno.setdefault(p['cidade'], []).append(p['nome'])
+    return retorno
 
-print(contar_palavras("Oi, oi! Tudo bem?"))
+pessoas = [{"nome": "Ana", "cidade": "SC"}, {"nome": "Bia", "cidade": "SP"}, {"nome": "Caio", "cidade": "SC"}]
+print(agrupar(pessoas))
