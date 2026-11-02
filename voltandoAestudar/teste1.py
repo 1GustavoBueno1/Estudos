@@ -1,3 +1,5 @@
+import string
+
 def estaticas(numeros: list[float]) ->  tuple[float, float, float]:
     total = len(numeros)
     soma = 0
@@ -15,4 +17,15 @@ def estaticas(numeros: list[float]) ->  tuple[float, float, float]:
     media = soma / total
     return media,  menor, maior
 
-print(estaticas([4, 8, 15]))
+
+def contar_palavras(texto: str) -> dict[str, int]:    
+    retorno = {}
+    for palavra in texto.lower().split():
+        palavra = texto.strip(string.punctuation)
+        if not palavra:
+            continue
+        retorno[palavra] = retorno.get(palavra, 0) + 1
+    return retorno
+
+
+print(contar_palavras("Oi, oi! Tudo bem?"))
