@@ -1,17 +1,16 @@
 import json
+import os
 
 
-
-def ler_json(caminho:str) -> dict:
+def ler_json_seguro(caminho: str) -> dict:
+    temp = caminho + ".tmp"
     try:
-        with open(caminho, encoding="utf-8") as f:
-            dados =  json.load(f)
-        if not isinstance(dados, dict):
-               return {}
+        with open(caminho, "r", encoding="utf-8") as f:
+            dados = json.load(f)
+        os.replace(temp, caminho)
         return dados
     except FileNotFoundError:
-        return {}
+        raise RuntimeError('Arquivo não encontrado')
     except json.JSONDecodeError:
-        return {}
-caminho = "./voltandoAestudar/dados.json"
-print(ler_json(caminho))
+        raise 
+print(ler_json_seguro("./voltandoAestudar/jsonteste1.json"))
